@@ -5,7 +5,9 @@ import VueRouter from 'vue-router';
 import Home from '@/views/Home/Home.vue';
 import About from '@/views/About/About.vue';
 import Lesson from '@/views/Lesson/Lesson.vue';
-import Profile from '@/views/Profile/Profile.vue'
+import Profile from '@/views/Profile/Profile.vue';
+import Login from '@/views/Login/Login.vue';
+import Reg from '@/views/Reg/Reg.vue';
 Vue.use(VueRouter); // router-link router-view  Vue.component('router-link')
 // this.$route this.$router Vue.prototype.$route
 export default new VueRouter({
@@ -28,12 +30,23 @@ export default new VueRouter({
     {
       path:'/lesson',
       name:'lesson',
-      component:Lesson
+      component:Lesson,
+      meta:{needLogin:true} // 表示这个路由需要登录后才能访问
     },
     {
       path:'/profile',
       name:'profile',
       component:Profile
+    },
+    {
+      path:'/login',
+      name:'login',
+      component:Login
+    },
+    {
+      path:'/reg',
+      name:'reg',
+      component:Reg
     }
   ]
 })

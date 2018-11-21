@@ -3,7 +3,6 @@ import MintUi from 'mint-ui'
 // 扩展axios
 // 配置默认路径
 axios.defaults.baseURL = 'http://localhost:3000';
-
 // 什么都没做  在发请求前 可以显示一个loading
 axios.interceptors.request.use(function(config){
   MintUi.Indicator.open({

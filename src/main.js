@@ -14,7 +14,29 @@ Vue.component(Icon.name,Icon)
 // 导入公共样式
 import '@/public/index.less'
 // 引入路由
-import router from './router.js'
+import router from './router.js';
+
+// 实现全局的过滤器
+import moment from 'moment';
+Vue.filter('date',function(data,format){
+ return moment(Date.now(data)).format(format);
+})
+Vue.filter('price',function(data){
+ return '￥'+ Number(data).toFixed(2);
+});
+
+// 拦截器 在每次切换页面的时候 都能获取到当前的切换状态
+router.beforeEach((to,from,next)=>{ // next是否向下执行
+  if(to.meta.needLogin){
+    // 去验证是否登录过
+    if(!false){ // 没登陆
+      next({path:'/login'}); // 全局的拦截器 只要没登陆条状到登录页
+    }
+  }else{
+    next(); // 不需要验证是否登录
+  }
+})
+
 new Vue({
   router,
   render: h => h(App)
