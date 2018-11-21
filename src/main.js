@@ -26,12 +26,13 @@ Vue.filter('price',function(data){
 });
 
 // 拦截器 在每次切换页面的时候 都能获取到当前的切换状态
+import axios from '@/api/index'
 router.beforeEach((to,from,next)=>{ // next是否向下执行
   if(to.meta.needLogin){
     // 去验证是否登录过
-    if(!false){ // 没登陆
-      next({path:'/login'}); // 全局的拦截器 只要没登陆条状到登录页
-    }
+    axios.get('/user/validate').then(res=>{
+      next(); // 如果用户登录了 可以继续向下执行 没登陆 去登录页
+    })
   }else{
     next(); // 不需要验证是否登录
   }
