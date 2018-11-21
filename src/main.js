@@ -7,7 +7,9 @@ Vue.config.productionTip = false
 import MintUi from 'mint-ui';
 import 'mint-ui/lib/style.css';
 Vue.use(MintUi);
-
+// 引入icon组件 制作成全局组件
+import Icon from '@/components/Icon.vue';
+Vue.component(Icon.name,Icon)
 
 import router from './router.js'
 new Vue({
