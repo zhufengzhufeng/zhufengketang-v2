@@ -11,6 +11,9 @@ Vue.use(MintUi);
 import Icon from '@/components/Icon.vue';
 Vue.component(Icon.name,Icon)
 
+// 导入公共样式
+import '@/public/index.less'
+// 引入路由
 import router from './router.js'
 new Vue({
   router,

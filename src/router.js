@@ -11,6 +11,10 @@ Vue.use(VueRouter); // router-link router-view  Vue.component('router-link')
 export default new VueRouter({
   mode:'hash',
   routes:[
+    { // 解决页面 刷新为/的问题 跳转到首页即可
+      path:'/',
+      redirect:'/home'
+    },
     {
       path:'/home',
       name:'home',
