@@ -7,7 +7,6 @@ import router from '@/router.js'
 // 什么都没做  在发请求前 可以显示一个loading
 axios.interceptors.request.use(function(config) {
   // 在发送请求的时候增加一个头
-  console.log(config)
   config.headers = {
     'Authorization':'Bearer '+localStorage.getItem('token')
   }
@@ -26,6 +25,7 @@ axios.interceptors.response.use(function(res){
   // 返回一个失败的promise
   return Promise.reject(res);
 },function(err){ // 当前失败了
+  MintUi.Indicator.close();
   if(err.response.status == 401){
     router.push('/login'); // 只要没权限 去login页面
   }

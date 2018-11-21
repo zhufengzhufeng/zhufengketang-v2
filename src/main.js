@@ -32,7 +32,7 @@ router.beforeEach((to,from,next)=>{ // next是否向下执行
     // 去验证是否登录过
     axios.get('/user/validate').then(res=>{
       next(); // 如果用户登录了 可以继续向下执行 没登陆 去登录页
-    })
+    });
   }else{
     next(); // 不需要验证是否登录
   }
