@@ -1,29 +1,32 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <mt-header fixed title="珠峰课堂" class="header"></mt-header>
+    <router-view style="margin-top:50px;"></router-view>
+    <mt-tabbar v-model="selected">
+      <mt-tab-item id="tab1">
+        tab1
+      </mt-tab-item>
+      <mt-tab-item id="tab2">
+        tab2
+      </mt-tab-item>
+      <mt-tab-item id="tab3">
+        tab3
+      </mt-tab-item>
+    </mt-tabbar>
   </div>
 </template>
-
-<style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+export default {
+  data(){
+    return {
+      selected:'tab2'
     }
   }
+}
+</script>
+
+<style lang="less" scoped>
+.header{
+  background: #2a2a2a;
 }
 </style>
