@@ -13,6 +13,8 @@ export default {
   mounted(){
     apis.getSlider().then(res=>{
       console.log(res);
+    },function (err) {
+      console.log(err);
     })
   }
 }
