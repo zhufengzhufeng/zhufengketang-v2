@@ -17,20 +17,23 @@
 </template>
 <script>
 import * as apis from '@/api/home.js';
-import {mapActions} from 'vuex';
+import {mapActions,mapGetters} from 'vuex';
+import * as Types from '@/store/mutation-types';
 export default {
-  data(){
-    return {
-      sliders:[],
-      lessons:[]
-    }
+  computed:{
+    ...mapGetters(['sliders','lessons'])
   },
   methods:{
     // 默认会自动派发一个动作 this.$store.dispatch('GET_SLIDERS')
-    ...mapActions(['GET_SLIDERS'])
+    ...mapActions([Types.GET_SLIDERS,Types.GET_LESSONS])
   },
   mounted(){
-    this['GET_SLIDERS']();
+    if(this.sliders.length == 0){
+      this[Types.GET_SLIDERS]();
+    }
+    if(this.lessons.length === 0){
+      this[Types.GET_LESSONS]();
+    }
     // 以前通过axios 直接获取数据 现在我们希望派发一个动作去获取数据
 
     // apis.getSlider().then(sliders=>{
@@ -38,9 +41,9 @@ export default {
     // },function (err) {
     //   console.log(err);
     // });
-    apis.getLesson().then(lessons=>{
-      this.lessons = lessons; // 获取全部课程列表
-    });
+    // apis.getLesson().then(lessons=>{
+    //   this.lessons = lessons; // 获取全部课程列表
+    // });
   }
 }
 </script>

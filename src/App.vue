@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <mt-header fixed title="珠峰课堂" class="header"></mt-header>
-    <router-view></router-view>
+     <router-view></router-view>
+    
     <mt-tabbar v-model="selected">
       <mt-tab-item id="/home" :class="{'is-selected':$route.path.startsWith('/home')}">
         <Icon iconfont="#icon-xingqiu" slot="icon"></Icon>
