@@ -16,7 +16,8 @@
   </div>
 </template>
 <script>
-import * as apis from '@/api/home.js'
+import * as apis from '@/api/home.js';
+import {mapActions} from 'vuex';
 export default {
   data(){
     return {
@@ -24,12 +25,19 @@ export default {
       lessons:[]
     }
   },
+  methods:{
+    // 默认会自动派发一个动作 this.$store.dispatch('GET_SLIDERS')
+    ...mapActions(['GET_SLIDERS'])
+  },
   mounted(){
-    apis.getSlider().then(sliders=>{
-      this.sliders = sliders; // 获取轮播图数据
-    },function (err) {
-      console.log(err);
-    });
+    this['GET_SLIDERS']();
+    // 以前通过axios 直接获取数据 现在我们希望派发一个动作去获取数据
+
+    // apis.getSlider().then(sliders=>{
+    //   this.sliders = sliders; // 获取轮播图数据
+    // },function (err) {
+    //   console.log(err);
+    // });
     apis.getLesson().then(lessons=>{
       this.lessons = lessons; // 获取全部课程列表
     });

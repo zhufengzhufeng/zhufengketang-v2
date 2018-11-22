@@ -38,12 +38,12 @@ router.beforeEach((to,from,next)=>{ // next是否向下执行
   }
 })
 
-import Root from './Root.vue' ; // vuex的代码存放在此处
-import store from './store';
+// import Root from './Root.vue' ; // vuex的代码存放在此处
+ import store from './store';
 new Vue({
   router,
   store,
-  render: h => h(Root)
+  render: h => h(App)
 }).$mount('#app');
 
 // vuex 共享数据的方式 1) eventBus 脆弱 2） vuex (大型应用中使用)
