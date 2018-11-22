@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import * as apis from '@/api/lesson.js'
+import * as apis from '@/api/lesson.js';
 export default {
   methods:{
    play(key){

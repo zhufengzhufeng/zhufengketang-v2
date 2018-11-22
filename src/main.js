@@ -38,7 +38,16 @@ router.beforeEach((to,from,next)=>{ // next是否向下执行
   }
 })
 
+import Root from './Root.vue' ; // vuex的代码存放在此处
+import store from './store';
 new Vue({
   router,
-  render: h => h(App)
-}).$mount('#app')
+  store,
+  render: h => h(Root)
+}).$mount('#app');
+
+// vuex 共享数据的方式 1) eventBus 脆弱 2） vuex (大型应用中使用)
+
+// vuex localStorage (没关系)
+// 1.localStorage 会有大小限制 5M  ，vuex 存在应用的内存中
+// 2.localStorage 并非响应式  vuex 数据和视图是响应式的
